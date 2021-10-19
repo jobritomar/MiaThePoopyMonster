@@ -43,6 +43,9 @@ function buildGameScreen() {
     game.startLoop()
     
     buildTimeDisplay()
+    buildScoreDisplay()
+
+    build
 
 
     function setUserDirection(event){
