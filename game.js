@@ -1,8 +1,12 @@
 
 class Game {
-    constructor (canvas) {
+    constructor (canvas, score, time, callbackGameOver, callbackGameWin) {
         this.canvas=canvas;
         this.ctx=this.canvas.getContext("2d") 
+        this.callbackGameOver = callbackGameOver
+        this.callbackGameWin = callbackGameWin
+        this.score = score;
+        this.time = time;
         
         this.user;
         this.mia;
@@ -10,14 +14,19 @@ class Game {
 
         this.isGameOver=false;
         this.isWin = false;
+
         this.maxScore=1500;
-        this.onGameOver;
-        this.onGameWin;
+        this.timeLeft=120;
+        this.intervalId=null;
+
+        
     }
+
+
 
     startLoop(){
         this.user = new User(this.canvas,0)
-        this.mia = new Mia(this.canvas)
+        this.mia = new Mia (this.canvas)
 
         function loop() {
             if(Math.random () > 0.97) {
@@ -59,6 +68,14 @@ class Game {
         this.mia.miaDraw()
     }
 
+    startInterval() {
+        this.intervalId= setInterval(( )=> {
+            this.time-=1
+            this.score=user.userScore
+        }, 1000)
+
+    }
+
     checkAllPoop() {
 
         this.poop.forEach(((poop, index)=> {
@@ -68,17 +85,17 @@ class Game {
 
                 //falta cenario 2 do tempo
 
-                const loseCenario1= this.user.score<0
-                const loseCenario2
+                const loseCenario1= this.user.score <0
+                const loseCenario2=this.timeLeft < 0
                 const winCenario= this.user.score=this.maxScore
 
-                if(loseCenario1) {
+                if(loseCenario1 || loseCenario2) {
                     this.isGameOver = true;
-                    this.onGameOver()
+                    this.callbackGameOver()
                 }
                 else if(winCenario) {
                     this.isWin = true;
-                    this.onGameWin()
+                    this.callbackGameWin()
 
                 }
             }
@@ -93,7 +110,11 @@ class Game {
 }
 
 gameOverCallback(callback) {
-    this.onGameOver = callback;
+    this.callbackGameOver = callback;
+}
+
+gameWinCallback(callback) {
+    this.callbackGameWin = callback;
 }
 
 }

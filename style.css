@@ -1,0 +1,14 @@
+
+canvas {
+ border: 2px solid black
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.game-screen  {
+    width: 100px;
+    height: 95vh;
+}
