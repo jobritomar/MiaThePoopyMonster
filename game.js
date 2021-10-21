@@ -1,6 +1,6 @@
 
 class Game {
-    constructor (canvas, score, time, callbackGameOver, callbackGameWin) {
+    constructor (canvas, score, time, user, callbackGameOver, callbackGameWin) {
         this.canvas=canvas;
         this.ctx=this.canvas.getContext("2d") 
         this.callbackGameOver = callbackGameOver
@@ -8,7 +8,7 @@ class Game {
         this.score = score;
         this.time = time;
         
-        this.user;
+        this.user = user;
         this.mia;
         this.poop=[];
 
@@ -16,7 +16,6 @@ class Game {
         this.isWin = false;
 
         this.maxScore=1500;
-        this.timeLeft=120;
         this.intervalId=null;
 
         
@@ -25,34 +24,30 @@ class Game {
 
 
     startLoop(){
-        this.user = new User(this.canvas,0)
         this.mia = new Mia (this.canvas)
 
-        function loop() {
-            if(Math.random () > 0.97) {
-                const y=Math.random()*this.canvas.height;
-                this.poop.push(new Poop(this.canvas,y))
-            }
-            
+        this.startInterval()
+
+        const loop = () => {
             this.checkAllPoop();
-            this.updateCanvas();
+
             this.clearCanvas();
             this.drawCanvas();
+            
 
             if(!this.isGameOver) {
                 window.requestAnimationFrame(loop);
             }
         }
 
-        window.requestAnimationFrame (loop)
+        window.requestAnimationFrame(loop)
 
     }
 
     updateClasses(){
-        this.user.userPosition()
-        this.user.userScreen()
+        this.poop.push(new Poop(this.canvas, this.mia.x, this.mia.y+25, "#4246CA"))
+        debugger
 
-        this.poop.forEach((poop)=> poop.poopPosition() )
 
         this.mia.miaPosition()
         this.mia.miaScreen()
@@ -63,17 +58,28 @@ class Game {
     }
 
     drawCanvas() {
-        this.user.userDraw()
+
         this.poop.forEach((poop)=> poop.poopDraw() )
+        this.user.userDraw()
         this.mia.miaDraw()
     }
 
     startInterval() {
+
+        debugger
+
         this.intervalId= setInterval(( )=> {
             this.time-=1
-            this.score=user.userScore
+            this.score=user.userScore()
+            
         }, 1000)
 
+        setInterval(( )=> {
+            this.updateClasses()
+        }, 1000)
+        setInterval(( )=> {
+            this.poop.forEach((poop)=> poop.poopPosition() )
+        }, 100)
     }
 
     checkAllPoop() {
@@ -85,27 +91,30 @@ class Game {
 
                 //falta cenario 2 do tempo
 
-                const loseCenario1= this.user.score <0
-                const loseCenario2=this.timeLeft < 0
-                const winCenario= this.user.score=this.maxScore
-
-                if(loseCenario1 || loseCenario2) {
-                    this.isGameOver = true;
-                    this.callbackGameOver()
-                }
-                else if(winCenario) {
-                    this.isWin = true;
-                    this.callbackGameWin()
-
-                }
-            }
 
             if(poop.y > this.canvas.height-10) {
                 this.poop.splice(index,1)
 
             }
-
+        }
     }))
+
+    const loseCenario1= this.user.score <0
+
+    const loseCenario2= this.time < 0
+    const winCenario= this.user.score === this.maxScore
+    
+
+    if(loseCenario1 === true || loseCenario2 === true) {
+        this.isGameOver = true;
+        this.callbackGameOver()
+    }
+    else if(winCenario === true) {
+     
+        this.isWin = true;
+        this.callbackGameWin()
+
+    }
 
 }
 

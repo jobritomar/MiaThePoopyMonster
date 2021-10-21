@@ -13,9 +13,12 @@ class Mia {
     }
 
 miaPosition() {
-    this.x = this.x + this.direction*this.speed
-    this.y= this.y + this.direction*Math.sin(this.x * Math.PI/180)
 
+    this.x = this.x + this.direction*this.speed*10
+    this.y= this.y + this.direction*100*Math.sin(this.x * Math.PI/180)
+
+    this.x = Math.abs(this.x % this.canvas.width)
+    this.y = Math.abs(this.y % 150)
 }
 
 miaDraw() {
@@ -30,13 +33,14 @@ miaDraw() {
 
 miaDirection(direction) {
     this.direction = direction
+    this.miaPosition()
 }
 
 miaScreen() {
-    const leftBoard = this.x - this.size/2 <= 0;
-    const rightBoard = this.x - this.size/2 >= this.canvas.width
-    const topBoard = this.y - this.size/2 <= 0;
-    const bottomBoard = this.y - this.size/2 >= this.canvas.height/5
+    const leftBoard = this.x <= 0;
+    const rightBoard = this.x >= this.canvas.width
+    const topBoard = this.y <= 0;
+    const bottomBoard = this.y >= this.canvas.height/5
 
 
     if(leftBoard||topBoard) {

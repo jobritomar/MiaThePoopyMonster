@@ -1,4 +1,7 @@
 
+ let game 
+ let user
+
 function buildDom(html) {
     //change screen
     const main = document.querySelector("main")
@@ -17,43 +20,66 @@ function buildStartScreen (){
         `
     )
 
-const startButton = document.querySelector('button');
-startButton.addEventListener("click", buildGameScreen)
+    
+    const startButton = document.querySelector('button');
+    startButton.addEventListener("click", buildGameScreen.bind(this))
+
+}
+
+function startMainInterval() {
+
+setInterval(( )=> {
+        const currentTimeNode= document.querySelector(".time p")
+        currentTimeNode.innerText = game.time
+        const scoreDisplay = document.querySelector('.score')
+        scoreDisplay.innerText= game.score
+    }
+    , 1000)
+}
 
 
 function buildGameScreen() {
+
     buildDom(
         `
-        <section class="game-screen">
+    <section class="game-screen">
             <canvas></canvas>
+        <section class ="time">
+            <h3> 'Time Left' </h3>
+            <p> 0 </p>
         </section>
+
+        <section class="score">
+            <h3> 'Your Score' </h3>
+            <p> 0 </p>
+        </section>
+
+    </section>
         `
     )
-
+    
     const width = document.querySelector(".game-screen").offsetWidth
     const height = document.querySelector(".game-screen").offsetHeight;
+
+    this.startMainInterval()
+
     const canvasElement = document.querySelector("canvas")
     canvasElement.setAttribute("width", width)
     canvasElement.setAttribute("height", height)
-
-    
-
-    const game = new Game(canvasElement, currentScore, currenTime, buildGameOver, buildGameWin)
+    user = new User(canvasElement, 0)
+    game = new Game(canvasElement, 0, 120, user, buildGameOver, buildGameWin)
     game.gameOverCallback(buildGameOver)
     game.startLoop()
-    
-    buildTimeDisplay()
-    buildScoreDisplay()
-
-    build
+    game.startInterval()
 
 
     function setUserDirection(event){
-        if(event.code==="Left") {
-            game.user.userPosition(-1)
+
+        if(event.code==="ArrowLeft") {
+            user.userDirection(-1)
         }
-        if(event.code==="Right") {
-            game.user.userPosition(1)
+        if(event.code==="ArrowRight") {
+            user.userDirection(1)
 
         }
     }
@@ -61,36 +87,6 @@ function buildGameScreen() {
 }
 
 
-function buildTimeDisplay() {
-
-    buildDom(
-        `
-        <section class ="time">
-            <h3> 'Time Left' </h3>
-            <p> 0 </p>
-
-        </section>
-        `
-    )
-    const currentTimeNode= document.querySelector("time")
-    currentTimeNode.innerText = currenTime
-}
-
-
-function buildScoreDisplay() {
-
-    buildDom(
-        `
-        <section class "score">
-            <h3> 'Your Score' </h3>
-            <p> 0 </p>
-        </section>
-        `
-    )
-
-    const scoreDisplay = document.querySelector('score')
-    scoreDisplay.innerText= currentScore
-}
 
 
 
