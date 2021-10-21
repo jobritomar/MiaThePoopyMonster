@@ -1,6 +1,11 @@
 
 class Poop {
+    static poopColors 
+
+
     constructor(canvas,x,y,colour) {
+
+
         this.canvas=canvas;
         this.ctx=this.canvas.getContext("2d")
 
@@ -10,8 +15,12 @@ class Poop {
         this.size=20;
         this.speed=5;
 
-        this.colour=colour;
         this.score=0;
+
+        this.poopColors= ['#4246CA' ,'#E89D38' ,'#6AC032' ,'#EC261A']
+
+         
+        this.colour=this.poopColors[Math.floor(Math.random()*this.poopColors.length)]
 
         switch (this.colour) {
             case '#4246CA':
@@ -26,15 +35,19 @@ class Poop {
             case '#EC261A':
                 this.score += -25
                 break;     
-              }
+
     }
+
+        }
+        
 
     //change y position
     poopPosition() {
-        this.y= this.y + this.direction * this.speed
+        this.y= this.y + this.speed
     }
 
     poopDraw() {
+
 
         this.ctx.fillStyle=this.colour;
         this.ctx.fillRect(

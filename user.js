@@ -15,6 +15,8 @@ class User{
     }
 
     userPosition(){
+
+        this.userScreen()
         this.x = this.x + this.direction * this.speed
     }
 
@@ -30,11 +32,14 @@ class User{
 
     userDirection(direction) {
         this.direction = direction
+        this.userPosition()
+  
     }
 
     userScreen() {
+        debugger
         const leftBoard = this.x - this.size/2 <= 0;
-        const rightBoard = this.x - this.size/2 >= this.canvas.width
+        const rightBoard = this.x + this.size/2 >= this.canvas.width
 
         if(rightBoard) {
             this.direction =-1
@@ -45,12 +50,13 @@ class User{
     }
 
     userScore() {
-        this.score++
+        return this.score++
     }
 
     userCheckCatchPoop(poop) {
-        const catched = this.y + this.size/2 > poop.y + poop.size/2
-
+        const catched = (this.y + this.size/2 < poop.y + poop.size/2) && 
+            ((poop.x > this.x - poop.size) && (poop.x < this.x + poop.size))
+        console.log(catched)
         return catched
     }
 }
