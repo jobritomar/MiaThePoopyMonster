@@ -100,7 +100,7 @@ class Game {
     }))
 
     const loseCenario1= this.user.score <0
-
+    debugger
     const loseCenario2= this.time < 0
     const winCenario= this.user.score === this.maxScore
     
