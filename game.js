@@ -70,7 +70,7 @@ class Game {
 
         this.intervalId= setInterval(( )=> {
             this.time-=1
-            this.score=user.Score()
+            this.score=user.userScore()
             
         }, 1000)
 
