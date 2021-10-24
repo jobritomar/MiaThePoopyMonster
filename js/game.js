@@ -16,9 +16,7 @@ class Game {
         this.isGameOver = false;
         this.isWin = false;
 
-        this.maxScore = 
-        
-        ;
+        this.maxScore = 1500;
         this.intervalId = null;
 
 
