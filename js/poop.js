@@ -8,26 +8,26 @@ class Poop {
         this.ctx=this.canvas.getContext("2d")
         this.x = x;
         this.y = y;
-        this.size=20;
+        this.size=30;
         this.speed=5;
         this.score=0;
         this.img = new Image();
         this.poopColours={ 
             '#4246CA': {
               score : 5 ,
-              img : './img/poop.png'
+              img : './img/poop_1.png'
             },
             '#E89D38': {
               score : 15,
-              img : './img/poop.png'
+              img : './img/poop_2.png'
             },
             '#6AC032': {
               score : 20,
-              img : './img/poop.png'
+              img : './img/poop_3.png'
             },
             '#EC261A': {
-              score : 25,
-              img : './img/poop.png'
+              score : -100,
+              img : './img/poop_4.png'
             },
         }
         this.poopColoursArr = Object.keys(this.poopColours)

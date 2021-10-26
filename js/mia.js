@@ -2,12 +2,12 @@ class Mia {
     constructor(canvas) {
         this.canvas=canvas;
         this.ctx=this.canvas.getContext("2d")
-        this.size=75;
+        this.size=100;
         this.x=(this.canvas.width/2);
         this.y=(this.size)+5;
         this.speed=4.7777;
         this.img = new Image();
-        this.img.src='./img/mia_poop.png'
+        this.img.src='./img/mia.png'
     }
 
 update() {

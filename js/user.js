@@ -10,7 +10,7 @@ class User{
         this.direction = 0;
         this.score=score;
         this.img = new Image();
-        this.img.src='./img/poop_bag.png'
+        this.img.src='./img/raidArtboard 6.png'
     }
 
     update(){
