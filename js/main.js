@@ -182,7 +182,7 @@ function buildGameScreen() {
     canvasElement.setAttribute("height", height)
 
     user = new User(canvasElement, 0)
-    game = new Game(canvasElement, 0, 120, user, buildGameOver, buildGameWin,displayScore);
+    game = new Game(canvasElement, 0, 120, user, buildGameOver, buildGameWin, displayScore);
 
     game.startLoop()
     //game.startInterval()

@@ -10,7 +10,7 @@ class User{
         this.direction = 0;
         this.score=score;
         this.img = new Image();
-        this.img.src='./img/raidArtboard 6.png'
+        this.img.src='./img/bg.png'
     }
 
     update(){
@@ -20,7 +20,9 @@ class User{
     }
 
     draw() {
+        this.ctx.fillRect(this.x, this.y, this.size, this.size)
         this.ctx.drawImage(this.img, this.x, this.y, this.size, this.size);
+
     }
 
     setDirection(direction) {
