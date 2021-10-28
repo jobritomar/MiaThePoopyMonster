@@ -14,20 +14,20 @@ class Poop {
         this.img = new Image();
         this.poopColours={ 
             '#4246CA': {
-              score : 5 ,
-              img : './img/poop_1.png'
+              score : 10 ,
+              img : './img/poop_4.png'
             },
             '#E89D38': {
-              score : 15,
-              img : './img/poop_2.png'
+              score : 20,
+              img : './img/poop_1.png'
             },
             '#6AC032': {
-              score : 20,
-              img : './img/poop_3.png'
+              score : 50,
+              img : './img/poop_2.png'
             },
             '#EC261A': {
               score : -100,
-              img : './img/poop_4.png'
+              img : './img/poop_3.png'
             },
         }
         this.poopColoursArr = Object.keys(this.poopColours)

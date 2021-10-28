@@ -48,7 +48,7 @@ class Game {
 
     addPoop() {
         this.poop.push(
-            new Poop(this.canvas, this.mia.x, this.mia.y + 25)
+            new Poop(this.canvas, this.mia.x + this.mia.size/2, this.mia.y + 50)
         );
     }
 

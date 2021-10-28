@@ -17,70 +17,56 @@ function buildStartScreen (){
 <section class="game-screen">
         
     <section class ="instructions">
-       <div>
+       
         <h4> Instructions </h4>
         <ul>
-            <li> 1) bla bla bla bla bla bla </li>
-            <li> 2) bla bla bla bla bla bla </li>
-            <li> 3) bla bla bla bla bla bla </li>
-            <li> 4) bla bla bla bla bla bla </li>
-            <li> 5) bla bla bla bla bla bla </li>
-            
+            <li> Use ⬅️ and ➡️ to move the bag </li>
+            <li> Try to catch a score of <b>1500</b> in 120 seconds </li>
+            <li> Careful! Each poop has its own score </li>
 
         </ul>
     
-        </div>
+    
     
     </section>
     
 
     <section class="screen">
-        <h1> 'Mia the Puppy Monster' </h1>
-        <button> 'Start' </button>
+        <h1> Mia the Puppy Monster </h1>
+        <button> Start </button>
     </section>
 
     <div>
         <section class="time">
             <h3> Time Left </h3>
-            <p> 120 </p>
+            <span> 120 </span>
         </section>
 
         <section class="score">
             <h3> Your Score </h3>
-            <p> 0 </p>
+            <span> 0 </span>
         </section>
 
         <section class="poops">
-            <h3> Instructions </h3>
             <ul>
                 <li>
-                    <img src="./img/poop.png"> </img>
-                    <p> poop </p>
+                    <img src='./img/poop_4.png'> </img>
+                    <span> +10 </span>
                 </li>
 
                 <li>
-                    <img src="./img/poop.png"> </img>
-                    <p> poop </p>
+                    <img src='./img/poop_1.png'> </img>
+                    <span> +20 </span>
                 </li>
 
                 <li>
-                    <img src="./img/poop.png"> </img>
-                    <p> poop </p>
+                    <img src='./img/poop_2.png'> </img>
+                    <span> +50 </span>
                 </li>
 
                 <li>
-                    <img src="./img/poop.png"> </img>
-                    <p> poop </p>
-                </li>
-
-                <li>
-                    <img src="./img/poop.png"> </img>
-                    <p> poop </p>
-                </li>
-
-                <li>
-                    <img src="./img/poop.png"> </img>
-                    <p> poop </p>
+                    <img src='./img/poop_3.png'> </img>
+                    <span> -100 </span>
                 </li>
             </ul>
         </section>
@@ -109,9 +95,9 @@ function buildStartScreen (){
 //}
 
 function displayScore(time, score) {
-    const currentTimeNode = document.querySelector(".time p");
+    const currentTimeNode = document.querySelector(".time span");
     currentTimeNode.innerText = time;
-    const scoreDisplay = document.querySelector(".score p");
+    const scoreDisplay = document.querySelector(".score span");
     scoreDisplay.innerText = score;
   }
 
@@ -125,77 +111,64 @@ function buildGameScreen() {
 
     buildDom(
         `
-    <section class="game-screen">
+        <section class="game-screen">
+        
+        <section class ="instructions">
+           
+            <h4> Instructions </h4>
+            <ul>
+                <li> Use ⬅️ and ➡️ to move the bag </li>
+                <li> Try to catch a score of <b>1500</b> in 120 seconds </li>
+                <li> Careful! Each poop has its own score </li>
 
-        <section class="instructions">
-            <div>
-                <h4> Instructions </h4>
-                <ul>
-                    <li> 1) bla bla bla bla bla bla </li>
-                    <li> 2) bla bla bla bla bla bla </li>
-                    <li> 3) bla bla bla bla bla bla </li>
-                    <li> 4) bla bla bla bla bla bla </li>
-                    <li> 5) bla bla bla bla bla bla </li>
-                </ul>
-    
-            </div>
-    
-    
-            <img src="https://lh3.googleusercontent.com/proxy/6SqBh2lQIGfhgNbTObzR-i4OvHeVA3zBGEPD5ptEjwrIw3TNgo_OpZzWdbZRoiSaF43VeQxy-qqeA3EBdjQSVP9EaijhiL4"
-                alt="doggo">
+            </ul>
+        
+        
+        
         </section>
-
+        
+    
         <canvas class="screen"></canvas>
-
+    
         <div>
             <section class="time">
                 <h3> Time Left </h3>
-                <p> 120 </p>
+                <span> 120 </span>
             </section>
-        
+    
             <section class="score">
                 <h3> Your Score </h3>
-                <p> 0 </p>
+                <span> 0 </span>
             </section>
-        
+    
             <section class="poops">
-                <h3> Instructions </h3>
                 <ul>
                     <li>
-                        <img src="./img/poop.png"> </img>
-                        <p> poop </p>
+                        <img src='./img/poop_4.png'> </img>
+                        <span> +10 </span>
                     </li>
-
+    
                     <li>
-                        <img src="./img/poop.png"> </img>
-                        <p> poop </p>
+                        <img src='./img/poop_1.png'> </img>
+                        <span> +20 </span>
                     </li>
-
+    
                     <li>
-                        <img src="./img/poop.png"> </img>
-                        <p> poop </p>
+                        <img src='./img/poop_2.png'> </img>
+                        <span> +50 </span>
                     </li>
-
+    
                     <li>
-                        <img src="./img/poop.png"> </img>
-                        <p> poop </p>
-                    </li>
-
-                    <li>
-                        <img src="./img/poop.png"> </img>
-                        <p> poop </p>
-                    </li>
-
-                    <li>
-                        <img src="./img/poop.png"> </img>
-                        <p> poop </p>
+                        <img src='./img/poop_3.png'> </img>
+                        <span> -100 </span>
                     </li>
                 </ul>
             </section>
         </div>
-    </section>
-
-  
+    
+         
+        </section>
+     
         `
     )
     
@@ -241,9 +214,10 @@ function buildGameOver(){
     audio.pause()
     buildDom(
         `
-        <section class "game-over">
-            <h1> 'Game Over' </h1>
-            <button> 'Let's Play Again!' </button>
+        <section class="game-end">
+            <h1> The Poopy Monster won! </h1>
+            <img src='./img/mia_lose.png'> </img>
+            <button> Let's try again </button>
         </section>
         `
     )
@@ -259,8 +233,9 @@ function buildGameWin(){
     audio.pause()
     buildDom(
         `
-        <section class "game-win">
-            <h1> 'You are a winner!' </h1>
+        <section class="game-end">
+            <h1> You defeat the Poopy Monster! </h1>
+            <img src='./img/mia-win.png'> </img>
             <button> 'Let's Play Again!' </button>
         </section>
         `
