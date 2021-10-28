@@ -236,7 +236,7 @@ function buildGameWin(){
         <section class="game-end">
             <h1> You defeat the Poopy Monster! </h1>
             <img src='./img/mia-win.png'> </img>
-            <button> 'Let's Play Again!' </button>
+            <button> Let's Play Again! </button>
         </section>
         `
     )
